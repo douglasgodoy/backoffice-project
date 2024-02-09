@@ -1,14 +1,11 @@
-import { DynamoDBSingleton } from 'src/infra/dynamo/DynamoSingleton';
 import { Request, Response } from 'express';
 import {
   INTERNAL_SERVER_ERROR_HTTP_RESPONSE,
   NOT_FOUND_HTTP_RESPONSE,
   SUCCESS_HTTP_RESPONSE,
 } from 'src/utils/http';
-import ClassDynamoService from 'src/services/class/dynamo/ClassDynamoService';
 import { BodyRequest } from './types';
-const dynamoInstance = DynamoDBSingleton.getInstance();
-const classInstance = new ClassDynamoService(dynamoInstance);
+import { classInstance } from 'src/services/class/dynamo';
 
 export default async function updateClassController(
   req: Request,

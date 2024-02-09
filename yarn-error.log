@@ -1,0 +1,90 @@
+Arguments: 
+  /Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/bin/node /Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/bin/yarn add -D jest-mock-aws-sdk
+
+PATH: 
+  /Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/bin:/Users/douglasgodoycardoso/.nvm/versions/node/v16.20.1/bin:/Users/douglasgodoycardoso/Library/Android/sdk/platform-tools:/Users/douglasgodoycardoso/Library/Android/sdk/tools:/Users/douglasgodoycardoso/.nvm/versions/node/v16.20.1/bin:/usr/local/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/douglasgodoycardoso/Library/Android/sdk/platform-tools:/Users/douglasgodoycardoso/Library/Android/sdk/tools:/Users/douglasgodoycardoso/.nvm/versions/node/v16.20.1/bin:/Users/douglasgodoycardoso/Library/Android/Sdk/emulator:/Users/douglasgodoycardoso/Library/Android/Sdk/tools:/Users/douglasgodoycardoso/Library/Android/Sdk/tools/bin:/Users/douglasgodoycardoso/Library/Android/Sdk/platform-tools:/Users/douglasgodoycardoso/.pub-cache/bin:/Users/douglasgodoycardoso/Library/Android/Sdk/emulator:/Users/douglasgodoycardoso/Library/Android/Sdk/tools:/Users/douglasgodoycardoso/Library/Android/Sdk/tools/bin:/Users/douglasgodoycardoso/Library/Android/Sdk/platform-tools:/Users/douglasgodoycardoso/.pub-cache/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.6.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/jest-mock-aws-sdk: Not found
+      at params.callback [as _callback] (/Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at self.callback (/Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:514:28)
+      at Request.<anonymous> (/Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:514:28)
+      at IncomingMessage.<anonymous> (/Users/douglasgodoycardoso/.nvm/versions/node/v20.6.0/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:628:28)
+      at IncomingMessage.emit (node:events:526:35)
+      at endReadableNT (node:internal/streams/readable:1376:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+    "name": "fourD-case",
+    "version": "0.0.0",
+    "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+    "type": "module",
+    "engines": {
+      "node": ">= 18.6.0"
+    },
+    "devDependencies": {
+      "@digitak/esrun": "^3.2.25",
+      "@types/bcrypt": "^5.0.2",
+      "@types/connect-timeout": "^0.0.39",
+      "@types/express": "^4.17.21",
+      "@types/jest": "~29.5",
+      "@types/jsonwebtoken": "^9.0.5",
+      "@types/node": "~18",
+      "@types/uuid": "^9.0.8",
+      "@typescript-eslint/eslint-plugin": "~6.2",
+      "@typescript-eslint/parser": "~6.2",
+      "eslint": "~8.46",
+      "eslint-config-prettier": "~9.0",
+      "eslint-plugin-jest": "~27.2",
+      "jest": "~29.6",
+      "prettier": "~3.0",
+      "rimraf": "~5.0",
+      "ts-api-utils": "~1.0",
+      "ts-jest": "~29.1",
+      "tsx": "^4.7.0",
+      "typescript": "~5.1"
+    },
+    "scripts": {
+      "start": "node build/src/main.js",
+      "dev": "tsx index.ts",
+      "clean": "rimraf coverage build tmp",
+      "prebuild": "npm run lint",
+      "build": "tsc -p tsconfig.json",
+      "build:watch": "tsc -w -p tsconfig.json",
+      "build:release": "npm run clean && tsc -p tsconfig.release.json",
+      "lint": "eslint . --ext .ts --ext .mts",
+      "test": "jest",
+      "prettier": "prettier --config .prettierrc --write .",
+      "test:watch": "jest --watch"
+    },
+    "author": "Douglas Cardoso",
+    "dependencies": {
+      "aws-sdk": "^2.1494.0",
+      "bcrypt": "^5.1.1",
+      "connect-timeout": "^1.9.0",
+      "dotenv": "^16.3.1",
+      "express": "^4.18.2",
+      "jsonwebtoken": "^9.0.2",
+      "tslib": "~2.6",
+      "uuid": "^9.0.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,11 +1,11 @@
 export default {
   testEnvironment: 'node',
   preset: 'ts-jest/presets/default-esm',
+  setupFiles: ['<rootDir>/jest.setEnvVars.js'],
   transform: {
     '^.+\\.m?[tj]s?$': ['ts-jest', { useESM: true }],
   },
   moduleNameMapper: {
-    // '^(\\.{1,2}/.*)\\.(m)?js$': '$1',
     '^src/(.*)$': '<rootDir>/src/$1',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(m)?ts$',
