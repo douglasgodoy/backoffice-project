@@ -9,6 +9,7 @@ services:
       - '8000:8000'
     volumes:
       - './docker/dynamodb:/home/dynamodblocal/data'
+    user: root
     working_dir: /home/dynamodblocal
     networks:
       - app_network

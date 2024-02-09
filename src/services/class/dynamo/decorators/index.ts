@@ -9,7 +9,6 @@ export function validateProperties(properties: string[]) {
     descriptor.value = function (...args: any[]) {
       const [input] = args;
 
-      // Verifica cada propriedade especificada
       for (const prop of properties) {
         if (!input || !input[prop]) {
           throw new Error(`${prop} is required for method ${propertyKey}`);
