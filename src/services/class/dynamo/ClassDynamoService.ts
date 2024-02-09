@@ -1,8 +1,10 @@
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import { ParseUpdateDynamo } from 'src/controllers/class/update/types';
 import { UpdateClassTypeParams } from './types';
-
+import { validateProperties } from './decorators';
 class ClassDynamoService {
+  constructor(private dynamoInstance: DocumentClient) {}
+
   async updateClass({ id, body, teacherId }: UpdateClassTypeParams) {
     let parseBodyToUpdate: ParseUpdateDynamo = {};
 
@@ -46,8 +48,15 @@ class ClassDynamoService {
 
     return await this.dynamoInstance.update(params).promise();
   }
-  constructor(private dynamoInstance: DocumentClient) {}
 
+  @validateProperties([
+    'PK',
+    'SK',
+    'Username',
+    'Description',
+    'ClassDate',
+    'ClassTitle',
+  ])
   async createClass({
     PK,
     SK,
