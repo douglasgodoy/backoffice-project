@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  dynamodb:
+    image: 'amazon/dynamodb-local:latest'
+    command: '-jar DynamoDBLocal.jar -sharedDb -dbPath ./data'
+    container_name: dynamodb-local
+    ports:
+      - '8000:8000'
+    volumes:
+      - './docker/dynamodb:/home/dynamodblocal/data'
+    working_dir: /home/dynamodblocal
+    networks:
+      - app_network
+
+  unitech-backoffice:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - dynamodb
+    networks:
+      - app_network
+    environment:
+      AWS_ACCESS_KEY_ID: 'DUMMYIDEXAMPLE'
+      AWS_SECRET_ACCESS_KEY: 'DUMMYEXAMPLEKEY'
+      DB_REGION: 'eu-west-1'
+      DB_URI: 'http://dynamodb-local:8000'
+      TABLE_NAME: 'UniTechBackOffice'
+networks:
+  app_network:
+    driver: bridge
