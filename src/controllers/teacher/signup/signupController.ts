@@ -7,7 +7,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import { TEACHER_STATUS } from 'src/utils/constants';
 import teacherInstance from 'src/services/teacher/dynamo';
-import auth from 'src/services/teacher/auth';
+import { auth } from 'src/services/teacher/auth';
 
 export default async function signupController(req: Request, res: Response) {
   try {

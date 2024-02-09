@@ -1,9 +1,4 @@
 import { Request, Response } from 'express';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { DynamoDBSingleton } from 'src/infra/dynamo/DynamoSingleton';
-import TeacherAuthService from 'src/services/teacher/auth/TeacherAuthService';
-import TeacherDynamoService from 'src/services/teacher/dynamo/TeacherDynamoService';
 import {
   BAD_REQUEST_HTTP_RESPONSE,
   INTERNAL_SERVER_ERROR_HTTP_RESPONSE,
@@ -12,12 +7,8 @@ import {
   SUCCESS_HTTP_RESPONSE,
 } from 'src/utils/http';
 import { TEACHER_STATUS } from 'src/utils/constants';
-import { TeacherTokenService } from 'src/services/teacher/auth/TeacherTokenService';
-
-const auth = new TeacherAuthService(bcrypt);
-const tokenInstance = new TeacherTokenService(jwt);
-const dynamoInstance = DynamoDBSingleton.getInstance();
-const teacherInstance = new TeacherDynamoService(dynamoInstance);
+import teacherInstance from 'src/services/teacher/dynamo';
+import { auth, tokenInstance } from 'src/services/teacher/auth';
 
 export const verifyPasswordLength = (password: string) => {
   return password.length >= 5 ? true : false;

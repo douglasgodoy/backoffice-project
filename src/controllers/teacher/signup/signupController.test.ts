@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { TEACHER_STATUS } from 'src/utils/constants';
 import signupController from './signupController';
 import teacherInstance from 'src/services/teacher/dynamo';
-// import auth from 'src/services/teacher/auth';
-// Mocking dependencies for the test
 jest.mock('uuid');
 jest.mock('bcrypt', () => ({
   hash: jest.fn().mockReturnValue('mockedId'),
@@ -18,8 +16,6 @@ describe('signupController', () => {
   const mockedHash = 'mockedId';
   const mockGetByUsername = teacherInstance.getByUsername as jest.Mock;
   const mockCreateTeacher = teacherInstance.createTeacher as jest.Mock;
-  //   const mockedAuth = new TeacherAuthService(bcrypt);
-  //   const mockHash = mockedAuth.hash as jest.Mock;
   const mockUuidv4 = uuidv4 as jest.Mock;
 
   beforeEach(() => {
