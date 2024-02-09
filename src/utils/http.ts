@@ -43,3 +43,7 @@ export const SUCCESS_HTTP_RESPONSE = (
 ) => {
   return res.status(200).json({ ok: true, data, message });
 };
+
+export const NO_CONTENT_HTTP_RESPONSE = (res: Response) => {
+  return res.status(204).json({ ok: true, message: 'No content' });
+};

@@ -87,6 +87,19 @@ class TeacherDynamoService {
 
     return await this.dynamoInstance.update(params).promise();
   }
+
+  async getClassesById(SK: string) {
+    const params: DocumentClient.QueryInput = {
+      TableName: <string>process.env.DYNAMO_TABLE,
+      IndexName: 'GSI-SK',
+      KeyConditionExpression: 'SK = :SK',
+      ExpressionAttributeValues: {
+        ':SK': SK,
+      },
+    };
+
+    return await this.dynamoInstance.query(params).promise();
+  }
 }
 
 export default TeacherDynamoService;

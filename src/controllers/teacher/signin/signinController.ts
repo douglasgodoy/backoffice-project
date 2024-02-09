@@ -15,7 +15,7 @@ import { TEACHER_STATUS } from 'src/utils/constants';
 import { TeacherTokenService } from 'src/services/teacher/auth/TeacherTokenService';
 
 const auth = new TeacherAuthService(bcrypt);
-const tokenRepository = new TeacherTokenService(jwt);
+const tokenInstance = new TeacherTokenService(jwt);
 const dynamoInstance = DynamoDBSingleton.getInstance();
 const teacherInstance = new TeacherDynamoService(dynamoInstance);
 
@@ -60,7 +60,7 @@ export default async function signinController(req: Request, res: Response) {
       userName: teacherData?.Username,
     };
 
-    const token = await tokenRepository.sign(payload);
+    const token = await tokenInstance.sign(payload);
 
     return SUCCESS_HTTP_RESPONSE(res, { ...payload, token });
   } catch (error) {

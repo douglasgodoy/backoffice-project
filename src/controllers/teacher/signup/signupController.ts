@@ -9,6 +9,7 @@ import {
   INTERNAL_SERVER_ERROR_HTTP_RESPONSE,
 } from 'src/utils/http';
 import { v4 as uuidv4 } from 'uuid';
+import { TEACHER_STATUS } from 'src/utils/constants';
 
 const auth = new TeacherAuthService(bcrypt);
 const dynamoInstance = DynamoDBSingleton.getInstance();
@@ -52,7 +53,7 @@ function parseTeacher({
   return {
     Username: username,
     Password: hash,
-    Status: 'PENDING',
+    Status: TEACHER_STATUS.PENDING,
     SK: 'CUSTOMER#TEACHER',
     PK: id,
   };
