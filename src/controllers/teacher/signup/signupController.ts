@@ -1,8 +1,4 @@
 import { Request, Response } from 'express';
-import bcrypt from 'bcrypt';
-import { DynamoDBSingleton } from 'src/infra/dynamo/DynamoSingleton';
-import TeacherAuthService from 'src/services/teacher/auth/TeacherAuthService';
-import TeacherDynamoService from 'src/services/teacher/dynamo/TeacherDynamoService';
 import {
   BAD_REQUEST_HTTP_RESPONSE,
   CREATED_HTTP_RESPONSE,
@@ -10,10 +6,8 @@ import {
 } from 'src/utils/http';
 import { v4 as uuidv4 } from 'uuid';
 import { TEACHER_STATUS } from 'src/utils/constants';
-
-const auth = new TeacherAuthService(bcrypt);
-const dynamoInstance = DynamoDBSingleton.getInstance();
-const teacherInstance = new TeacherDynamoService(dynamoInstance);
+import teacherInstance from 'src/services/teacher/dynamo';
+import auth from 'src/services/teacher/auth';
 
 export default async function signupController(req: Request, res: Response) {
   try {

@@ -4,7 +4,7 @@
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
   "type": "module",
   "engines": {
-    "node": ">= 20.6.0"
+    "node": ">= 18.6.0"
   },
   "devDependencies": {
     "@digitak/esrun": "^3.2.25",
@@ -37,7 +37,7 @@
     "build:watch": "tsc -w -p tsconfig.json",
     "build:release": "npm run clean && tsc -p tsconfig.release.json",
     "lint": "eslint . --ext .ts --ext .mts",
-    "test": "jest --coverage",
+    "test": "jest",
     "prettier": "prettier --config .prettierrc --write .",
     "test:watch": "jest --watch"
   },
