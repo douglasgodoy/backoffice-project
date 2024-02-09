@@ -1,17 +1,12 @@
 import { Request, Response } from 'express';
-import { DynamoDBSingleton } from 'src/infra/dynamo/DynamoSingleton';
 import {
   CREATED_HTTP_RESPONSE,
   INTERNAL_SERVER_ERROR_HTTP_RESPONSE,
 } from 'src/utils/http';
-import { TeacherTokenService } from 'src/services/teacher/auth/TeacherTokenService';
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import ClassDynamoService from 'src/services/class/dynamo/ClassDynamoService';
+import { JwtPayload } from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
-
-const dynamoInstance = DynamoDBSingleton.getInstance();
-const classInstance = new ClassDynamoService(dynamoInstance);
-const tokenInstance = new TeacherTokenService(jwt);
+import { tokenInstance } from 'src/services/teacher/auth';
+import { classInstance } from 'src/services/class/dynamo';
 
 export default async function registerNewClassController(
   req: Request,

@@ -1,14 +1,11 @@
-import { DynamoDBSingleton } from 'src/infra/dynamo/DynamoSingleton';
 import { Request, Response } from 'express';
-import TeacherDynamoService from 'src/services/teacher/dynamo/TeacherDynamoService';
 import {
   INTERNAL_SERVER_ERROR_HTTP_RESPONSE,
   NO_CONTENT_HTTP_RESPONSE,
   SUCCESS_HTTP_RESPONSE,
 } from 'src/utils/http';
 import { ClassFromDatabase, ClassFromHttp } from './types';
-const dynamoInstance = DynamoDBSingleton.getInstance();
-const teacherInstance = new TeacherDynamoService(dynamoInstance);
+import teacherInstance from 'src/services/teacher/dynamo';
 
 export default async function getClassesByIdController(
   req: Request,
@@ -37,7 +34,8 @@ export default async function getClassesByIdController(
     return INTERNAL_SERVER_ERROR_HTTP_RESPONSE(res);
   }
 }
-function adapterClass(classes: ClassFromDatabase[]): ClassFromHttp[] {
+
+export function adapterClass(classes: ClassFromDatabase[]): ClassFromHttp[] {
   return classes.map((classItem: ClassFromDatabase) => {
     return {
       id: classItem.PK,
