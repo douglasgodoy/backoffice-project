@@ -5,6 +5,7 @@ import { validateProperties } from './decorators';
 class ClassDynamoService {
   constructor(private dynamoInstance: DocumentClient) {}
 
+  @validateProperties(['id', 'body', 'teacherId'])
   async updateClass({ id, body, teacherId }: UpdateClassTypeParams) {
     let parseBodyToUpdate: ParseUpdateDynamo = {};
 
@@ -87,6 +88,7 @@ class ClassDynamoService {
     return await this.dynamoInstance.put(params).promise();
   }
 
+  @validateProperties(['PK'])
   async getClassById(PK: string) {
     const params: DocumentClient.QueryInput = {
       TableName: <string>process.env.DYNAMO_TABLE,
